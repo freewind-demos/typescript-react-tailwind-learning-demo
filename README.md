@@ -9,7 +9,7 @@ TypeScript React tailwind Demo
 
 ```
 npm install
-npm run demo
+npm start
 ```
 
 It will open page on browser automatically.
