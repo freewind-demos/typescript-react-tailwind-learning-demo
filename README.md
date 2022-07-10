@@ -5,7 +5,10 @@ TypeScript React tailwind Demo
 
 在Webstorm中可以很好的支持className的提示和补全
 
-注意：.pcss中语法如果出错（比如少了`;`），将会报source map的错误，有点误导
+注意：
+
+1. `postcss.config.js`及其使用的两个插件必不可少
+2. `.pcss`中语法如果出错（比如少了`;`），将会报source map的错误，有点误导
 
 ```
 npm install
