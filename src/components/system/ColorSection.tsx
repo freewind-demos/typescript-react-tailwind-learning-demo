@@ -261,6 +261,20 @@ export const ColorSection: FC = () => {
                             </div>
                         </div>
                     </div>
+
+                    <div>
+                        <h5 className="font-medium text-sm mb-1">Q3: text-[20px] 这样的值在 Tailwind 中有预定义吗？如果没有，它是怎么生效的？</h5>
+                        <div className="text-sm text-gray-600 space-y-1">
+                            <p>没有预定义。这是 Tailwind 的 JIT (Just-In-Time) 编译器实现的功能：</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>当检测到 [] 语法时，JIT 编译器会即时生成对应的 CSS</li>
+                                <li>例如 text-[20px] 会生成：.text-\[20px\] {`{`} font-size: 20px; {`}`}</li>
+                                <li>这种机制让我们能在不修改配置的情况下使用任意值</li>
+                                <li>常用尺寸建议使用预设值（如 text-sm、text-base 等），可以保持设计的一致性</li>
+                                <li>任意值语法主要用于特殊场景，比如遗留系统集成或特殊设计要求</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
