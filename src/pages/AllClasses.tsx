@@ -4,6 +4,7 @@ import TextSize from '../components/text/TextSize';
 import TextWeight from '../components/text/TextWeight';
 import ColorCalculation from '../components/text/ColorCalculation';
 import PresetValues from '../components/system/PresetValues';
+import SpecialSyntax from '../components/system/SpecialSyntax';
 
 interface Tab {
   id: string;
@@ -62,6 +63,11 @@ const AllClasses: React.FC = () => {
       id: 'grid',
       label: 'Grid布局',
       component: <div>待实现</div>
+    },
+    {
+      id: 'special-syntax',
+      label: '特殊语法',
+      component: <SpecialSyntax />
     }
   ];
 
