@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.demo-element {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #e5e7eb;
+  font-size: 14px;
+}
+
+/* Demo element specific styles */
+.demo-element.bg-blue-500,
+.demo-element.bg-green-500,
+.demo-element.bg-red-500,
+.demo-element.bg-yellow-500,
+.demo-element.bg-purple-500 {
+  color: white;
+}
+
+.demo-element.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.demo-element.grid::before {
+  content: "1";
+}
+
+.demo-element.grid::after {
+  content: "2";
+}
+
+.demo-element.flex {
+  gap: 0.5rem;
+}
+
+.demo-element.flex::before {
+  content: "1";
+}
+
+.demo-element.flex::after {
+  content: "2";
+}
