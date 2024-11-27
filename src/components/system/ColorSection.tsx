@@ -122,22 +122,16 @@ export const ColorSection: FC = () => {
                             <h4 className="font-medium text-gray-900">
                                 {group.group}
                             </h4>
-                            <div className={`flex flex-wrap gap-2 ${group.colors ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : ''}`}>
+                            <div className="flex flex-wrap gap-1.5">
                                 {(group.values || group.colors)?.map((item: ColorItem | ValueItem) => (
-                                    <div key={'value' in item ? item.value : item.name} className="flex items-center">
-                                        <code className={`px-2 py-1 rounded border border-gray-200 text-sm font-mono ${
+                                    <code key={'value' in item ? item.value : item.name} 
+                                        className={`px-2 py-1 rounded border border-gray-200 text-sm font-mono ${
                                             'textClass' in item ? `${item.bgClass} ${item.textClass}` : 'bg-white'
                                         }`}>
-                                            <Tooltip text={item.desc}>
-                                                {'value' in item ? item.value : item.name}
-                                            </Tooltip>
-                                        </code>
-                                        {'textClass' in item && (
-                                            <span className={`text-sm ml-2 ${item.textClass}`}>
-                                                （{item.desc}）
-                                            </span>
-                                        )}
-                                    </div>
+                                        <Tooltip text={item.desc}>
+                                            {'value' in item ? item.value : item.name}
+                                        </Tooltip>
+                                    </code>
                                 ))}
                             </div>
                             <p className="text-sm text-gray-600 mt-2">
