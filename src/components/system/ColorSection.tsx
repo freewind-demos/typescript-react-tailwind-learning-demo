@@ -1,6 +1,38 @@
 import React, { FC } from "react";
 import Tooltip from "../common/Tooltip";
 
+/**
+ * 常见问题解答：
+ * 
+ * Q1: 为什么 text-[#FF0000] 里允许使用 [] 这样的符号，是html的class允许的吗？
+ * A1: [] 是 Tailwind 的特殊语法，称为"任意值语法"(Arbitrary values)，不是标准 HTML class。
+ * - Tailwind 在构建时会处理这些特殊语法，转换为标准的 CSS
+ * - 允许的字符：字母、数字、%、/、_、-、小数点、括号、逗号、空格
+ * - 不允许的字符：引号、反引号、特殊符号（如 @、#（除了颜色值）、!、$等）
+ * - 格式规则：property-[value] 
+ *   例如：text-[20px]、w-[100%]、bg-[#FF0000]、grid-cols-[repeat(3,1fr)]
+ * 
+ * Q2: HEX、RGB、RGBA、HSL、HSLA 这些是什么意思？
+ * A2: 这些都是 CSS 中表示颜色的不同格式：
+ * - HEX：十六进制颜色码，如 #FF0000 表示红色
+ *   格式：#RRGGBB，每两位表示红、绿、蓝的值（00-FF）
+ * 
+ * - RGB：红、绿、蓝三原色值，如 rgb(255,0,0) 表示红色
+ *   格式：rgb(R,G,B)，每个值范围 0-255
+ * 
+ * - RGBA：RGB + 透明度，如 rgba(255,0,0,0.5) 表示半透明红色
+ *   格式：rgba(R,G,B,A)，A 是透明度，范围 0-1
+ * 
+ * - HSL：色相、饱和度、亮度，如 hsl(0,100%,50%) 表示红色
+ *   格式：hsl(H,S,L)
+ *   H: 色相 0-360 度
+ *   S: 饱和度 0-100%
+ *   L: 亮度 0-100%
+ * 
+ * - HSLA：HSL + 透明度，如 hsla(0,100%,50%,0.5) 表示半透明红色
+ *   格式：hsla(H,S,L,A)，A 是透明度，范围 0-1
+ */
+
 type ColorItem = {
     name: string;
     desc: string;
@@ -173,6 +205,63 @@ export const ColorSection: FC = () => {
                 <code className="ml-2 px-2 py-1 bg-gray-100 rounded">
                     text-[#FF0000], bg-[rgb(255,0,0)]
                 </code>
+            </div>
+
+            {/* 常见问题解答部分 */}
+            <div className="bg-blue-50 p-4 rounded">
+                <h4 className="font-medium mb-2">常见问题解答</h4>
+                
+                <div className="space-y-4">
+                    <div>
+                        <h5 className="font-medium text-sm mb-1">Q1: 为什么 text-[#FF0000] 里允许使用 [] 这样的符号，是html的class允许的吗？</h5>
+                        <div className="text-sm text-gray-600 space-y-1">
+                            <p>[] 是 Tailwind 的特殊语法，称为"任意值语法"(Arbitrary values)，不是标准 HTML class。</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>Tailwind 在构建时会处理这些特殊语法，转换为标准的 CSS</li>
+                                <li>允许的字符：字母、数字、%、/、_、-、小数点、括号、逗号、空格</li>
+                                <li>不允许的字符：引号、反引号、特殊符号（如 @、#（除了颜色值）、!、$等）</li>
+                                <li>格式规则：property-[value]</li>
+                                <li>例如：text-[20px]、w-[100%]、bg-[#FF0000]、grid-cols-[repeat(3,1fr)]</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h5 className="font-medium text-sm mb-1">Q2: HEX、RGB、RGBA、HSL、HSLA 这些是什么意思？</h5>
+                        <div className="text-sm text-gray-600 space-y-2">
+                            <div>
+                                <p className="font-medium">HEX：十六进制颜色码</p>
+                                <p>格式：#RRGGBB，每两位表示红、绿、蓝的值（00-FF）</p>
+                                <p>例如：#FF0000 表示红色</p>
+                            </div>
+                            <div>
+                                <p className="font-medium">RGB：红、绿、蓝三原色值</p>
+                                <p>格式：rgb(R,G,B)，每个值范围 0-255</p>
+                                <p>例如：rgb(255,0,0) 表示红色</p>
+                            </div>
+                            <div>
+                                <p className="font-medium">RGBA：RGB + 透明度</p>
+                                <p>格式：rgba(R,G,B,A)，A 是透明度，范围 0-1</p>
+                                <p>例如：rgba(255,0,0,0.5) 表示半透明红色</p>
+                            </div>
+                            <div>
+                                <p className="font-medium">HSL：色相、饱和度、亮度</p>
+                                <p>格式：hsl(H,S,L)</p>
+                                <ul className="list-disc list-inside pl-4">
+                                    <li>H: 色相 0-360 度</li>
+                                    <li>S: 饱和度 0-100%</li>
+                                    <li>L: 亮度 0-100%</li>
+                                </ul>
+                                <p>例如：hsl(0,100%,50%) 表示红色</p>
+                            </div>
+                            <div>
+                                <p className="font-medium">HSLA：HSL + 透明度</p>
+                                <p>格式：hsla(H,S,L,A)，A 是透明度，范围 0-1</p>
+                                <p>例如：hsla(0,100%,50%,0.5) 表示半透明红色</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
