@@ -81,6 +81,55 @@ const SpecialSyntax: React.FC = () => {
                     <h3 className="text-lg font-medium mb-4">4. 组合语法</h3>
                     <div className="space-y-4">
                         <p className="text-gray-600">group-hover 和 peer 用于处理组件间的交互：</p>
+                        
+                        {/* group 解释部分 */}
+                        <div className="bg-yellow-50 p-4 rounded mb-4">
+                            <p className="font-medium">group 机制说明：</p>
+                            <ul className="list-disc list-inside space-y-1 text-sm text-gray-600 mt-2">
+                                <li>group 类标记一个父元素</li>
+                                <li>group-* 类用在子元素上，表示"当父元素处于某状态时"</li>
+                                <li>可用的状态包括：hover、focus、active、disabled 等</li>
+                            </ul>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            {/* 卡片示例 */}
+                            <div className="p-4 bg-gray-50 rounded">
+                                <p className="font-medium mb-2">卡片悬停效果：</p>
+                                <div className="group bg-white p-4 rounded border hover:bg-gray-50 transition-all">
+                                    <h4 className="font-medium group-hover:text-blue-500">卡片标题</h4>
+                                    <p className="text-gray-500 group-hover:text-gray-700">描述文本</p>
+                                    <button className="mt-2 px-3 py-1 text-sm border rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                                        操作按钮
+                                    </button>
+                                </div>
+                                <div className="text-sm mt-2 space-y-1">
+                                    <code className="block">group hover:bg-gray-50 {/* 父元素 */}</code>
+                                    <code className="block">group-hover:text-blue-500 {/* 子元素 */}</code>
+                                    <code className="block">group-hover:opacity-100 {/* 子元素 */}</code>
+                                </div>
+                            </div>
+
+                            {/* 导航示例 */}
+                            <div className="p-4 bg-gray-50 rounded">
+                                <p className="font-medium mb-2">导航项悬停效果：</p>
+                                <div className="space-y-2">
+                                    <a href="#" className="group flex items-center p-2 rounded hover:bg-gray-100">
+                                        <div className="w-8 h-8 bg-gray-200 rounded group-hover:bg-blue-500 transition-colors"></div>
+                                        <div className="ml-3">
+                                            <div className="font-medium group-hover:text-blue-500">导航项</div>
+                                            <div className="text-sm text-gray-500 group-hover:text-blue-400">补充说明</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="text-sm mt-2 space-y-1">
+                                    <code className="block">group hover:bg-gray-100 {/* 父元素 */}</code>
+                                    <code className="block">group-hover:bg-blue-500 {/* 图标 */}</code>
+                                    <code className="block">group-hover:text-blue-500 {/* 文本 */}</code>
+                                </div>
+                            </div>
+                        </div>
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="p-4 bg-gray-50 rounded">
                                 <p className="font-medium mb-2">组悬停效果：</p>
