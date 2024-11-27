@@ -1,23 +1,69 @@
 import React, { FC } from "react";
 import Tooltip from "../common/Tooltip";
-import { getValueDescription } from "./getValueDescription";
+
+type FontItem = {
+    value: string;
+    desc: string;
+};
+
+type FontGroup = {
+    group: string;
+    values: FontItem[];
+};
 
 export const FontSection: FC = () => {
-    const fixedExamples = [
+    const fixedExamples: FontGroup[] = [
         {
             group: '字体大小（10个）',
-            values: ['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl', '4xl', '5xl', '6xl']
+            values: [
+                { value: 'xs', desc: '特小号字体，12px' },
+                { value: 'sm', desc: '小号字体，14px' },
+                { value: 'base', desc: '基础字体大小，16px' },
+                { value: 'lg', desc: '大号字体，18px' },
+                { value: 'xl', desc: '特大号字体，20px' },
+                { value: '2xl', desc: '超大号字体，24px' },
+                { value: '3xl', desc: '超大号字体，30px' },
+                { value: '4xl', desc: '超大号字体，36px' },
+                { value: '5xl', desc: '超大号字体，48px' },
+                { value: '6xl', desc: '超大号字体，60px' }
+            ]
         },
         {
             group: '字重（9个）',
-            values: ['thin', 'extralight', 'light', 'normal', 'medium', 'semibold', 'bold', 'extrabold', 'black']
+            values: [
+                { value: 'thin', desc: '最细字重，等于 font-weight: 100' },
+                { value: 'extralight', desc: '特细字重，等于 font-weight: 200' },
+                { value: 'light', desc: '细字重，等于 font-weight: 300' },
+                { value: 'normal', desc: '正常字重，等于 font-weight: 400' },
+                { value: 'medium', desc: '中等字重，等于 font-weight: 500' },
+                { value: 'semibold', desc: '半粗字重，等于 font-weight: 600' },
+                { value: 'bold', desc: '粗字重，等于 font-weight: 700' },
+                { value: 'extrabold', desc: '特粗字重，等于 font-weight: 800' },
+                { value: 'black', desc: '最粗字重，等于 font-weight: 900' }
+            ]
         },
         {
             group: '行高（10个）',
-            values: ['none', 'tight', 'snug', 'normal', 'relaxed', 'loose', '3', '4', '5', '6']
+            values: [
+                { value: 'none', desc: '行高为1，即无行间距' },
+                { value: 'tight', desc: '行高为1.25，较紧凑的行间距' },
+                { value: 'snug', desc: '行高为1.375，稍紧凑的行间距' },
+                { value: 'normal', desc: '行高为1.5，正常行间距' },
+                { value: 'relaxed', desc: '行高为1.625，较宽松的行间距' },
+                { value: 'loose', desc: '行高为2，宽松的行间距' },
+                { value: '3', desc: '行高为.75rem' },
+                { value: '4', desc: '行高为1rem' },
+                { value: '5', desc: '行高为1.25rem' },
+                { value: '6', desc: '行高为1.5rem' }
+            ]
         }
     ];
-    const arbitraryExamples = ['text-[20px]', 'font-[600]', 'leading-[2.5]'];
+
+    const arbitraryExamples = [
+        { value: 'text-[20px]', desc: '自定义字体大小' },
+        { value: 'font-[600]', desc: '自定义字重' },
+        { value: 'leading-[2.5]', desc: '自定义行高' }
+    ];
 
     return <div className="mb-8 border-b pb-6">
         <h3 className="text-lg font-medium mb-4">字体相关</h3>
@@ -42,50 +88,37 @@ export const FontSection: FC = () => {
                         </span>
                     </div>
                     <div className="space-y-4">
-                        {Array.isArray(value.examples) && value.examples.length > 0 && (
-                            typeof value.examples[0] === 'string' ? (
-                                <div className="flex flex-wrap gap-2">
-                                    {(value.examples as string[]).map((example) => (
-                                        <code key={example} className="px-2 py-1 bg-white rounded border border-gray-200 text-sm font-mono">
-                                            <Tooltip text={getValueDescription(example, '字体相关')}>
-                                                {example}
-                                            </Tooltip>
-                                        </code>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="space-y-4">
-                                    {(value.examples as any[]).map((group) => (
-                                        <div key={group.group} className="space-y-2">
-                                            <h4 className="font-medium text-gray-900">
-                                                {group.group}
-                                            </h4>
-                                            <div className={`flex flex-wrap gap-2 ${group.colors ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : ''}`}>
-                                                {(group.values || group.colors)?.map((item: any) => (
-                                                    <div key={typeof item === 'string' ? item : item.name} className="flex items-center">
-                                                        <code className={`px-2 py-1 rounded border border-gray-200 text-sm font-mono ${typeof item === 'string'
-                                                            ? 'bg-white'
-                                                            : `${item.bgClass} ${item.textClass}`}`}>
-                                                            <Tooltip text={typeof item === 'string'
-                                                                ? getValueDescription(item, group.group)
-                                                                : `${item.desc}（${getValueDescription(item.name, group.group)}）`}>
-                                                                {typeof item === 'string' ? item : item.name}
-                                                            </Tooltip>
-                                                        </code>
-                                                        {typeof item !== 'string' && (
-                                                            <span className={`text-sm ml-2 ${item.textClass}`}>
-                                                                （{item.desc}）
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            <p className="text-sm text-gray-600 mt-2">{value.description}</p>
+                        {value.type === 'fixed' ? (
+                            <div className="space-y-4">
+                                {(value.examples as FontGroup[]).map((group) => (
+                                    <div key={group.group} className="space-y-2">
+                                        <h4 className="font-medium text-gray-900">
+                                            {group.group}
+                                        </h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {group.values.map((item) => (
+                                                <code key={item.value} className="px-2 py-1 bg-white rounded border border-gray-200 text-sm font-mono">
+                                                    <Tooltip text={item.desc}>
+                                                        {item.value}
+                                                    </Tooltip>
+                                                </code>
+                                            ))}
                                         </div>
-                                    ))}
-                                </div>
-                            )
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="flex flex-wrap gap-2">
+                                {(value.examples as { value: string; desc: string }[]).map((item) => (
+                                    <code key={item.value} className="px-2 py-1 bg-white rounded border border-gray-200 text-sm font-mono">
+                                        <Tooltip text={item.desc}>
+                                            {item.value}
+                                        </Tooltip>
+                                    </code>
+                                ))}
+                            </div>
                         )}
+                        <p className="text-sm text-gray-600 mt-2">{value.description}</p>
                     </div>
                 </div>
             ))}
