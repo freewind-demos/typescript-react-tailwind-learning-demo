@@ -56,73 +56,73 @@ export const ColorSection: FC = () => {
         {
             group: '灰度色系（5个）',
             colors: [
-                { name: 'slate', desc: '石板灰色系列，一种带有蓝色调的中性灰色。基准色值(500)：#64748B', textClass: 'text-slate-500', bgClass: 'bg-slate-100' },
-                { name: 'gray', desc: '纯灰色系列，最基础的灰色。基准色值(500)：#6B7280', textClass: 'text-gray-500', bgClass: 'bg-gray-100' },
-                { name: 'zinc', desc: '锌灰色系列，带有金属质感的冷灰色。基准色值(500)：#71717A', textClass: 'text-zinc-500', bgClass: 'bg-zinc-100' },
-                { name: 'neutral', desc: '中性灰色系列，完全中性的灰色。基准色值(500)：#737373', textClass: 'text-neutral-500', bgClass: 'bg-neutral-100' },
-                { name: 'stone', desc: '石灰色系列，带有暖色调的灰色。基准色值(500)：#78716C', textClass: 'text-stone-500', bgClass: 'bg-stone-100' }
+                { name: 'slate', desc: '石板灰色系列，一种带有蓝色调的中性灰色 (color: #64748b)', textClass: 'text-slate-500', bgClass: 'bg-slate-100' },
+                { name: 'gray', desc: '纯灰色系列，最基础的灰色 (color: #6b7280)', textClass: 'text-gray-500', bgClass: 'bg-gray-100' },
+                { name: 'zinc', desc: '锌灰色系列，带有金属质感的冷灰色 (color: #71717a)', textClass: 'text-zinc-500', bgClass: 'bg-zinc-100' },
+                { name: 'neutral', desc: '中性灰色系列，完全中性的灰色 (color: #737373)', textClass: 'text-neutral-500', bgClass: 'bg-neutral-100' },
+                { name: 'stone', desc: '石灰色系列，带有暖色调的灰色 (color: #78716c)', textClass: 'text-stone-500', bgClass: 'bg-stone-100' }
             ]
         },
         {
             group: '暖色系（4个）',
             colors: [
-                { name: 'red', desc: '红色系列，用于错误、警告等需要引起注意的地方。基准色值(500)：#EF4444', textClass: 'text-red-500', bgClass: 'bg-red-100' },
-                { name: 'orange', desc: '橙色系列，温暖活力的色调，用于醒目但不过分刺激的地方。基准色值(500)：#F97316', textClass: 'text-orange-500', bgClass: 'bg-orange-100' },
-                { name: 'amber', desc: '琥珀色系列，金黄色调，介于橙色和黄色之间。基准色值(500)：#F59E0B', textClass: 'text-amber-500', bgClass: 'bg-amber-100' },
-                { name: 'yellow', desc: '黄色系列，明亮醒目，常用于警告和提示。基准色值(500)：#EAB308', textClass: 'text-yellow-500', bgClass: 'bg-yellow-100' }
+                { name: 'red', desc: '红色系列，用于错误、警告等需要引起注意的地方 (color: #ef4444)', textClass: 'text-red-500', bgClass: 'bg-red-100' },
+                { name: 'orange', desc: '橙色系列，温暖活力的色调 (color: #f97316)', textClass: 'text-orange-500', bgClass: 'bg-orange-100' },
+                { name: 'amber', desc: '琥珀色系列，金黄色调 (color: #f59e0b)', textClass: 'text-amber-500', bgClass: 'bg-amber-100' },
+                { name: 'yellow', desc: '黄色系列，明亮醒目 (color: #eab308)', textClass: 'text-yellow-500', bgClass: 'bg-yellow-100' }
             ]
         },
         {
             group: '绿色系（4个）',
             colors: [
-                { name: 'lime', desc: '青柠色系列，明亮的黄绿色，富有活力。基准色值(500)：#84CC16', textClass: 'text-lime-500', bgClass: 'bg-lime-100' },
-                { name: 'green', desc: '绿色系列，代表成功、通过等积极含义。基准色值(500)：#22C55E', textClass: 'text-green-500', bgClass: 'bg-green-100' },
-                { name: 'emerald', desc: '祖母绿系列，典雅的深绿色。基准色值(500)：#10B981', textClass: 'text-emerald-500', bgClass: 'bg-emerald-100' },
-                { name: 'teal', desc: '青色系列，介于绿色和蓝色之间的清新色调。基准色值(500)：#14B8A6', textClass: 'text-teal-500', bgClass: 'bg-teal-100' }
+                { name: 'lime', desc: '青柠色系列，明亮的黄绿色 (color: #84cc16)', textClass: 'text-lime-500', bgClass: 'bg-lime-100' },
+                { name: 'green', desc: '绿色系列，代表成功、通过等积极含义 (color: #22c55e)', textClass: 'text-green-500', bgClass: 'bg-green-100' },
+                { name: 'emerald', desc: '祖母绿系列，典雅的深绿色 (color: #10b981)', textClass: 'text-emerald-500', bgClass: 'bg-emerald-100' },
+                { name: 'teal', desc: '青色系列，介于绿色和蓝色之间 (color: #14b8a6)', textClass: 'text-teal-500', bgClass: 'bg-teal-100' }
             ]
         },
         {
             group: '蓝色系（4个）',
             colors: [
-                { name: 'cyan', desc: '青色系列，明亮清新的蓝绿色。基准色值(500)：#06B6D4', textClass: 'text-cyan-500', bgClass: 'bg-cyan-100' },
-                { name: 'sky', desc: '天蓝色系列，明亮清透的蓝色。基准色值(500)：#0EA5E9', textClass: 'text-sky-500', bgClass: 'bg-sky-100' },
-                { name: 'blue', desc: '蓝色系列，最基础的蓝色，常用于链接和交互元素。基准色值(500)：#3B82F6', textClass: 'text-blue-500', bgClass: 'bg-blue-100' },
-                { name: 'indigo', desc: '靛青色系列，深邃的蓝紫色。基准色值(500)：#6366F1', textClass: 'text-indigo-500', bgClass: 'bg-indigo-100' }
+                { name: 'cyan', desc: '青色系列，明亮清新的蓝绿色 (color: #06b6d4)', textClass: 'text-cyan-500', bgClass: 'bg-cyan-100' },
+                { name: 'sky', desc: '天蓝色系列，明亮清透的蓝色 (color: #0ea5e9)', textClass: 'text-sky-500', bgClass: 'bg-sky-100' },
+                { name: 'blue', desc: '蓝色系列，最基础的蓝色 (color: #3b82f6)', textClass: 'text-blue-500', bgClass: 'bg-blue-100' },
+                { name: 'indigo', desc: '靛青色系列，深邃的蓝紫色 (color: #6366f1)', textClass: 'text-indigo-500', bgClass: 'bg-indigo-100' }
             ]
         },
         {
             group: '紫红色系（5个）',
             colors: [
-                { name: 'violet', desc: '紫罗兰色系列，优雅的紫色。基准色值(500)：#8B5CF6', textClass: 'text-violet-500', bgClass: 'bg-violet-100' },
-                { name: 'purple', desc: '紫色系列，典型的紫色。基准色值(500)：#A855F7', textClass: 'text-purple-500', bgClass: 'bg-purple-100' },
-                { name: 'fuchsia', desc: '洋红色系列，鲜艳的粉紫色。基准色值(500)：#D946EF', textClass: 'text-fuchsia-500', bgClass: 'bg-fuchsia-100' },
-                { name: 'pink', desc: '粉红色系列，温柔的粉色。基准色值(500)：#EC4899', textClass: 'text-pink-500', bgClass: 'bg-pink-100' },
-                { name: 'rose', desc: '玫瑰色系列，介于粉红和红色之间。基准色值(500)：#F43F5E', textClass: 'text-rose-500', bgClass: 'bg-rose-100' }
+                { name: 'violet', desc: '紫罗兰色系列，优雅的紫色 (color: #8b5cf6)', textClass: 'text-violet-500', bgClass: 'bg-violet-100' },
+                { name: 'purple', desc: '紫色系列，典型的紫色 (color: #a855f7)', textClass: 'text-purple-500', bgClass: 'bg-purple-100' },
+                { name: 'fuchsia', desc: '洋红色系列，鲜艳的粉紫色 (color: #d946ef)', textClass: 'text-fuchsia-500', bgClass: 'bg-fuchsia-100' },
+                { name: 'pink', desc: '粉红色系列，温柔的粉色 (color: #ec4899)', textClass: 'text-pink-500', bgClass: 'bg-pink-100' },
+                { name: 'rose', desc: '玫瑰色系列，介于粉红和红色之间 (color: #f43f5e)', textClass: 'text-rose-500', bgClass: 'bg-rose-100' }
             ]
         },
         {
             group: '特殊颜色（5个）',
             colors: [
-                { name: 'black', desc: '纯黑色，用于最深的文字和背景。色值：#000000', textClass: 'text-black', bgClass: 'bg-gray-100' },
-                { name: 'white', desc: '纯白色，用于背景和浅色文字。色值：#FFFFFF', textClass: 'text-gray-900', bgClass: 'bg-white' },
-                { name: 'transparent', desc: '完全透明。色值：transparent', textClass: 'text-gray-500', bgClass: 'bg-transparent' },
-                { name: 'current', desc: '使用当前元素继承的颜色值。色值：currentColor', textClass: 'text-current', bgClass: 'bg-gray-100' },
-                { name: 'inherit', desc: '继承父元素的颜色值。色值：inherit', textClass: 'text-inherit', bgClass: 'bg-gray-100' }
+                { name: 'black', desc: '纯黑色，用于最深的文字和背景 (color: #000000)', textClass: 'text-black', bgClass: 'bg-gray-100' },
+                { name: 'white', desc: '纯白色，用于背景和浅色文字 (color: #ffffff)', textClass: 'text-gray-900', bgClass: 'bg-white' },
+                { name: 'transparent', desc: '完全透明 (color: transparent)', textClass: 'text-gray-500', bgClass: 'bg-transparent' },
+                { name: 'current', desc: '使用当前元素继承的颜色值 (color: currentColor)', textClass: 'text-current', bgClass: 'bg-gray-100' },
+                { name: 'inherit', desc: '继承父元素的颜色值 (color: inherit)', textClass: 'text-inherit', bgClass: 'bg-gray-100' }
             ]
         },
         {
             group: '颜色深度刻度（10个）',
             values: [
-                { value: '50', desc: '最浅的颜色，与白色混合90%。色值：#F9FAFB' },
-                { value: '100', desc: '非常浅的颜色，与白色混合80%。色值：#F3F4F6' },
-                { value: '200', desc: '浅色，与白色混合60%。色值：#E5E7EB' },
-                { value: '300', desc: '中浅色，与白色混合40%。色值：#D1D5DB' },
-                { value: '400', desc: '浅中色，与白色混合20%。色值：#9F9F9F' },
-                { value: '500', desc: '基础色，原始颜色' },
-                { value: '600', desc: '深中色，与黑色混合20%。色值：#4F4F4F' },
-                { value: '700', desc: '中深色，与黑色混合40%。色值：#3B3F54' },
-                { value: '800', desc: '深色，与黑色混合60%。色值：#2F303A' },
-                { value: '900', desc: '最深的颜色，与黑色混合80%。色值：#1A1D23' }
+                { value: '50', desc: '最浅的颜色，与白色混合90% (color: #f8fafc)' },
+                { value: '100', desc: '非常浅的颜色，与白色混合80% (color: #f1f5f9)' },
+                { value: '200', desc: '浅色，与白色混合60% (color: #e2e8f0)' },
+                { value: '300', desc: '中浅色，与白色混合40% (color: #cbd5e1)' },
+                { value: '400', desc: '浅中色，与白色混合20% (color: #94a3b8)' },
+                { value: '500', desc: '基础色，原始颜色 (color: #64748b)' },
+                { value: '600', desc: '深中色，与黑色混合20% (color: #475569)' },
+                { value: '700', desc: '中深色，与黑色混合40% (color: #334155)' },
+                { value: '800', desc: '深色，与黑色混合60% (color: #1e293b)' },
+                { value: '900', desc: '最深的颜色，与黑色混合80% (color: #0f172a)' }
             ]
         }
     ];
