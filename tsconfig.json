@@ -5,8 +5,10 @@
     "module": "commonjs",
     "jsx": "react",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "skipDefaultLibCheck": true
   },
+  "include": ["src"],
   "exclude": [
     "node_modules"
   ]
