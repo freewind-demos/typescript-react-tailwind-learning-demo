@@ -275,6 +275,28 @@ export const ColorSection: FC = () => {
                             </ul>
                         </div>
                     </div>
+
+                    <div>
+                        <h5 className="font-medium text-sm mb-1">Q4: 除了 [] 这种格式，在 Tailwind 中还有其它类似设计吗？</h5>
+                        <div className="text-sm text-gray-600 space-y-1">
+                            <p>是的，Tailwind 还有其他几种特殊语法设计：</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>修饰符语法：hover:、focus:、dark: 等，如 hover:bg-blue-500</li>
+                                <li>响应式前缀：sm:、md:、lg:、xl: 等，如 md:flex</li>
+                                <li>重要性标记：!，如 !important 修饰符，例如 !font-bold</li>
+                                <li>组合语法：group-hover:、peer-focus: 等，用于处理组件间的交互</li>
+                                <li>变体组合：可以组合多个修饰符，如 dark:hover:bg-gray-800</li>
+                            </ul>
+                            <p className="mt-2">使用示例：</p>
+                            <ul className="list-disc list-inside pl-4 space-y-1">
+                                <li>hover:scale-110 - 鼠标悬停时放大到110%</li>
+                                <li>md:flex lg:grid - 中等屏幕用flex布局，大屏用grid</li>
+                                <li>dark:bg-gray-800 - 暗色模式下使用深色背景</li>
+                                <li>group-hover:visible - 父元素悬停时显示</li>
+                                <li>!mt-0 - 强制外边距为0（覆盖其他样式）</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
