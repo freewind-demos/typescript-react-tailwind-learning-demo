@@ -5,6 +5,12 @@ import TextWeight from '../components/text/TextWeight';
 import ColorCalculation from '../components/text/ColorCalculation';
 import PresetValues from '../components/system/PresetValues';
 import SpecialSyntax from '../components/system/SpecialSyntax';
+import BackgroundColors from '../components/text/BackgroundColors';
+import Borders from '../components/text/Borders';
+import Spacing from '../components/text/Spacing';
+import FlexLayout from '../components/text/FlexLayout';
+import GridLayout from '../components/text/GridLayout';
+import Alignment from '../components/text/Alignment';
 
 interface Tab {
   id: string;
@@ -40,29 +46,34 @@ const AllClasses: React.FC = () => {
       component: <TextWeight />
     },
     {
+      id: 'alignment',
+      label: '对齐与居中',
+      component: <Alignment />
+    },
+    {
       id: 'backgrounds',
       label: '背景颜色',
-      component: <div>待实现</div>
+      component: <BackgroundColors />
     },
     {
       id: 'borders',
       label: '边框',
-      component: <div>待实现</div>
+      component: <Borders />
     },
     {
       id: 'spacing',
       label: '间距',
-      component: <div>待实现</div>
+      component: <Spacing />
     },
     {
       id: 'flex',
       label: 'Flex布局',
-      component: <div>待实现</div>
+      component: <FlexLayout />
     },
     {
       id: 'grid',
       label: 'Grid布局',
-      component: <div>待实现</div>
+      component: <GridLayout />
     },
     {
       id: 'special-syntax',
