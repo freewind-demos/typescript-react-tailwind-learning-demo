@@ -5,6 +5,11 @@ import { colorValues } from '../../utils/colorValues';
 import { presetCategories } from '../../data/presetCategories';
 import { ColorGroup, PresetValue, PresetCategory } from '../../types/presets';
 
+type ColorValues = typeof colorValues;
+type ColorName = keyof ColorValues;
+type TooltipValues = typeof tooltips;
+type TooltipKey = keyof TooltipValues;
+
 const getValueDescription = (value: string, group?: string) => {
   if (!group) return '暂无说明';
 
@@ -13,9 +18,9 @@ const getValueDescription = (value: string, group?: string) => {
     if (/^\d+$/.test(value)) {
       return `与基准色混合，生成的颜色值会根据具体的颜色系列变化`;
     }
-    const colorName = value.toLowerCase();
-    if (colorValues[colorName]) {
-      const values = Object.entries(colorValues[colorName])
+    const colorName = value.toLowerCase() === 'black' ? value.toLowerCase() : value.toLowerCase() as ColorName;
+    if (colorName in colorValues) {
+      const values = Object.entries(colorValues[colorName as ColorName])
         .map(([depth, hex]) => `${depth}: ${hex}`)
         .join('\\n');
       return `色值系列：\\n${values}`;
@@ -33,7 +38,7 @@ const getValueDescription = (value: string, group?: string) => {
       fit: '适应内容尺寸，width/height: fit-content',
       auto: '自动计算尺寸，width/height: auto'
     };
-    return sizeUnits[value] || tooltips[value] || '暂无说明';
+    return sizeUnits[value] || tooltips[value as TooltipKey] || '暂无说明';
   }
 
   if (group.includes('相对单位')) {
@@ -43,7 +48,7 @@ const getValueDescription = (value: string, group?: string) => {
       vw: '视窗宽度的1%，例如：50vw = 视窗宽度的50%',
       rem: '相对于根元素(html)的字体大小，1rem = 16px（默认）'
     };
-    return relativeUnits[value] || tooltips[value] || '暂无说明';
+    return relativeUnits[value] || tooltips[value as TooltipKey] || '暂无说明';
   }
 
   if (group.includes('分数单位')) {
@@ -61,7 +66,7 @@ const getValueDescription = (value: string, group?: string) => {
       '1/6': '六分之一 ≈ 16.667%',
       '5/6': '六分之五 ≈ 83.333%'
     };
-    return fractions[value] || tooltips[value] || '暂无说明';
+    return fractions[value] || tooltips[value as TooltipKey] || '暂无说明';
   }
 
   if (group.includes('固定尺寸')) {
@@ -91,24 +96,24 @@ const getValueDescription = (value: string, group?: string) => {
       '32': '8rem (128px)',
       '36': '9rem (144px)'
     };
-    return sizes[value] || tooltips[value] || '暂无说明';
+    return sizes[value] || tooltips[value as TooltipKey] || '暂无说明';
   }
 
   // 处理字体相关
   if (group.includes('字体大小')) {
     const fontSizes: Record<string, string> = {
-      xs: '极小字体：0.75rem (12px)',
-      sm: '小字体：0.875rem (14px)',
-      base: '基础字体：1rem (16px)',
-      lg: '大字体：1.125rem (18px)',
-      xl: '特大字体：1.25rem (20px)',
-      '2xl': '超大字体：1.5rem (24px)',
-      '3xl': '超大字体：1.875rem (30px)',
-      '4xl': '超大字体：2.25rem (36px)',
-      '5xl': '超大字体：3rem (48px)',
-      '6xl': '超大字体：3.75rem (60px)'
+      xs: '特小号字体，12px',
+      sm: '小号字体，14px',
+      base: '基础字体大小，16px',
+      lg: '大号字体，18px',
+      xl: '特大号字体，20px',
+      '2xl': '超大号字体，24px',
+      '3xl': '超大号字体，30px',
+      '4xl': '超大号字体，36px',
+      '5xl': '超大号字体，48px',
+      '6xl': '超大号字体，60px'
     };
-    return fontSizes[value] || tooltips[value] || '暂无说明';
+    return fontSizes[value] || tooltips[value as TooltipKey] || '暂无说明';
   }
 
   if (group.includes('字重')) {
@@ -123,26 +128,34 @@ const getValueDescription = (value: string, group?: string) => {
       extrabold: '特粗字重：font-weight: 800',
       black: '最粗字重：font-weight: 900'
     };
-    return fontWeights[value] || tooltips[value] || '暂无说明';
+    return fontWeights[value] || tooltips[value === 'black' ? 'black_weight' : value as TooltipKey] || '暂无说明';
   }
 
   if (group.includes('行高')) {
     const lineHeights: Record<string, string> = {
       none: '行高为1，无行间距',
-      tight: '行高为1.25，较紧凑',
-      snug: '行高为1.375，稍紧凑',
-      normal: '行高为1.5，标准行间距',
-      relaxed: '行高为1.625，较宽松',
-      loose: '行高为2，宽松',
+      tight: '行高为1.25，较紧凑的行间距',
+      snug: '行高为1.375，稍紧凑的行间距',
+      normal: '行高为1.5，正常行间距',
+      relaxed: '行高为1.625，较宽松的行间距',
+      loose: '行高为2，宽松的行间距',
       '3': '行高为.75rem (12px)',
       '4': '行高为1rem (16px)',
       '5': '行高为1.25rem (20px)',
       '6': '行高为1.5rem (24px)'
     };
-    return lineHeights[value] || tooltips[value] || '暂无说明';
+    const tooltipValue = tooltips[value as TooltipKey];
+    if (typeof tooltipValue === 'object' && tooltipValue !== null && 'none' in tooltipValue) {
+      return tooltipValue[value as keyof typeof tooltipValue] || '暂无说明';
+    }
+    return lineHeights[value] || (typeof tooltipValue === 'string' ? tooltipValue : '暂无说明');
   }
 
-  return tooltips[value] || '暂无说明';
+  const tooltipValue = tooltips[value as TooltipKey];
+  if (typeof tooltipValue === 'object' && tooltipValue !== null && 'none' in tooltipValue) {
+    return tooltipValue[value as keyof typeof tooltipValue] || '暂无说明';
+  }
+  return typeof tooltipValue === 'string' ? tooltipValue : '暂无说明';
 };
 
 const PresetValues: React.FC = () => {

@@ -27,7 +27,7 @@ export const tooltips = {
   pink: '粉红色系列，温柔的粉色。基准色值(500)：#EC4899',
   rose: '玫瑰色系列，介于粉红和红色之间。基准色值(500)：#F43F5E',
   
-  black: '纯黑色，用于最深的文字和背景。色值：#000000',
+  black_color: '纯黑色，用于最深的文字和背景。色值：#000000',
   white: '纯白色，用于背景和浅色文字。色值：#FFFFFF',
   transparent: '完全透明。色值：transparent',
   current: '使用当前元素继承的颜色值。色值：currentColor',
@@ -129,7 +129,7 @@ export const tooltips = {
   semibold: '半粗字重，等于 font-weight: 600',
   bold: '粗字重，等于 font-weight: 700',
   extrabold: '特粗字重，等于 font-weight: 800',
-  black: '最粗字重，等于 font-weight: 900',
+  black_weight: '最粗字重，等于 font-weight: 900',
 
   // 行高
   leading: {
