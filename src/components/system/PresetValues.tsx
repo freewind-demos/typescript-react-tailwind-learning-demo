@@ -1,12 +1,9 @@
 import React from 'react';
+import { colorValues } from '../../utils/colorValues';
 import Tooltip from '../common/Tooltip';
-import {tooltips} from '../../utils/tooltips';
-import {colorValues} from '../../utils/colorValues';
 
 type ColorValues = typeof colorValues;
 type ColorName = keyof ColorValues;
-type TooltipValues = typeof tooltips;
-type TooltipKey = keyof TooltipValues;
 
 const getValueDescription = (value: string, group?: string) => {
   if (!group) return '暂无说明';
@@ -36,7 +33,7 @@ const getValueDescription = (value: string, group?: string) => {
       fit: '适应内容尺寸，width/height: fit-content',
       auto: '自动计算尺寸，width/height: auto'
     };
-    return sizeUnits[value] || tooltips[value as TooltipKey] || '暂无说明';
+    return sizeUnits[value] || '暂无说明';
   }
 
   if (group.includes('相对单位')) {
@@ -46,7 +43,7 @@ const getValueDescription = (value: string, group?: string) => {
       vw: '视窗宽度的1%，例如：50vw = 视窗宽度的50%',
       rem: '相对于根元素(html)的字体大小，1rem = 16px（默认）'
     };
-    return relativeUnits[value] || tooltips[value as TooltipKey] || '暂无说明';
+    return relativeUnits[value] || '暂无说明';
   }
 
   if (group.includes('分数单位')) {
@@ -64,7 +61,7 @@ const getValueDescription = (value: string, group?: string) => {
       '1/6': '六分之一 ≈ 16.667%',
       '5/6': '六分之五 ≈ 83.333%'
     };
-    return fractions[value] || tooltips[value as TooltipKey] || '暂无说明';
+    return fractions[value] || '暂无说明';
   }
 
   if (group.includes('固定尺寸')) {
@@ -94,7 +91,7 @@ const getValueDescription = (value: string, group?: string) => {
       '32': '8rem (128px)',
       '36': '9rem (144px)'
     };
-    return sizes[value] || tooltips[value as TooltipKey] || '暂无说明';
+    return sizes[value] || '暂无说明';
   }
 
   // 处理字体相关
@@ -111,7 +108,7 @@ const getValueDescription = (value: string, group?: string) => {
       '5xl': '超大号字体，48px',
       '6xl': '超大号字体，60px'
     };
-    return fontSizes[value] || tooltips[value as TooltipKey] || '暂无说明';
+    return fontSizes[value] || '暂无说明';
   }
 
   if (group.includes('字重')) {
@@ -126,7 +123,7 @@ const getValueDescription = (value: string, group?: string) => {
       extrabold: '特粗字重：font-weight: 800',
       black: '最粗字重：font-weight: 900'
     };
-    return fontWeights[value] || tooltips[value === 'black' ? 'black_weight' : value as TooltipKey] || '暂无说明';
+    return fontWeights[value] || '暂无说明';
   }
 
   if (group.includes('行高')) {
@@ -142,18 +139,10 @@ const getValueDescription = (value: string, group?: string) => {
       '5': '行高为1.25rem (20px)',
       '6': '行高为1.5rem (24px)'
     };
-    const tooltipValue = tooltips[value as TooltipKey];
-    if (typeof tooltipValue === 'object' && tooltipValue !== null && 'none' in tooltipValue) {
-      return tooltipValue[value as keyof typeof tooltipValue] || '暂无说明';
-    }
-    return lineHeights[value] || (typeof tooltipValue === 'string' ? tooltipValue : '暂无说明');
+    return lineHeights[value] || '暂无说明';
   }
 
-  const tooltipValue = tooltips[value as TooltipKey];
-  if (typeof tooltipValue === 'object' && tooltipValue !== null && 'none' in tooltipValue) {
-    return tooltipValue[value as keyof typeof tooltipValue] || '暂无说明';
-  }
-  return typeof tooltipValue === 'string' ? tooltipValue : '暂无说明';
+  return '暂无说明';
 };
 
 const PresetValues: React.FC = () => {
@@ -187,58 +176,58 @@ const PresetValues: React.FC = () => {
                   {
                     group: '灰度色系（5个）',
                     colors: [
-                      {name: 'slate', desc: '石板灰', textClass: 'text-slate-500', bgClass: 'bg-slate-100'},
-                      {name: 'gray', desc: '灰色', textClass: 'text-gray-500', bgClass: 'bg-gray-100'},
-                      {name: 'zinc', desc: '锌灰', textClass: 'text-zinc-500', bgClass: 'bg-zinc-100'},
-                      {name: 'neutral', desc: '中性灰', textClass: 'text-neutral-500', bgClass: 'bg-neutral-100'},
-                      {name: 'stone', desc: '石灰', textClass: 'text-stone-500', bgClass: 'bg-stone-100'}
+                      { name: 'slate', desc: '石板灰', textClass: 'text-slate-500', bgClass: 'bg-slate-100' },
+                      { name: 'gray', desc: '灰色', textClass: 'text-gray-500', bgClass: 'bg-gray-100' },
+                      { name: 'zinc', desc: '锌灰', textClass: 'text-zinc-500', bgClass: 'bg-zinc-100' },
+                      { name: 'neutral', desc: '中性灰', textClass: 'text-neutral-500', bgClass: 'bg-neutral-100' },
+                      { name: 'stone', desc: '石灰', textClass: 'text-stone-500', bgClass: 'bg-stone-100' }
                     ]
                   },
                   {
                     group: '暖色系（4个）',
                     colors: [
-                      {name: 'red', desc: '红色', textClass: 'text-red-500', bgClass: 'bg-red-100'},
-                      {name: 'orange', desc: '橙色', textClass: 'text-orange-500', bgClass: 'bg-orange-100'},
-                      {name: 'amber', desc: '琥珀色', textClass: 'text-amber-500', bgClass: 'bg-amber-100'},
-                      {name: 'yellow', desc: '黄色', textClass: 'text-yellow-500', bgClass: 'bg-yellow-100'}
+                      { name: 'red', desc: '红色', textClass: 'text-red-500', bgClass: 'bg-red-100' },
+                      { name: 'orange', desc: '橙色', textClass: 'text-orange-500', bgClass: 'bg-orange-100' },
+                      { name: 'amber', desc: '琥珀色', textClass: 'text-amber-500', bgClass: 'bg-amber-100' },
+                      { name: 'yellow', desc: '黄色', textClass: 'text-yellow-500', bgClass: 'bg-yellow-100' }
                     ]
                   },
                   {
                     group: '绿色系（4个）',
                     colors: [
-                      {name: 'lime', desc: '青柠色', textClass: 'text-lime-500', bgClass: 'bg-lime-100'},
-                      {name: 'green', desc: '绿色', textClass: 'text-green-500', bgClass: 'bg-green-100'},
-                      {name: 'emerald', desc: '祖母绿', textClass: 'text-emerald-500', bgClass: 'bg-emerald-100'},
-                      {name: 'teal', desc: '青色', textClass: 'text-teal-500', bgClass: 'bg-teal-100'}
+                      { name: 'lime', desc: '青柠色', textClass: 'text-lime-500', bgClass: 'bg-lime-100' },
+                      { name: 'green', desc: '绿色', textClass: 'text-green-500', bgClass: 'bg-green-100' },
+                      { name: 'emerald', desc: '祖母绿', textClass: 'text-emerald-500', bgClass: 'bg-emerald-100' },
+                      { name: 'teal', desc: '青色', textClass: 'text-teal-500', bgClass: 'bg-teal-100' }
                     ]
                   },
                   {
                     group: '蓝色系（4个）',
                     colors: [
-                      {name: 'cyan', desc: '青色', textClass: 'text-cyan-500', bgClass: 'bg-cyan-100'},
-                      {name: 'sky', desc: '天蓝色', textClass: 'text-sky-500', bgClass: 'bg-sky-100'},
-                      {name: 'blue', desc: '蓝色', textClass: 'text-blue-500', bgClass: 'bg-blue-100'},
-                      {name: 'indigo', desc: '靛青色', textClass: 'text-indigo-500', bgClass: 'bg-indigo-100'}
+                      { name: 'cyan', desc: '青色', textClass: 'text-cyan-500', bgClass: 'bg-cyan-100' },
+                      { name: 'sky', desc: '天蓝色', textClass: 'text-sky-500', bgClass: 'bg-sky-100' },
+                      { name: 'blue', desc: '蓝色', textClass: 'text-blue-500', bgClass: 'bg-blue-100' },
+                      { name: 'indigo', desc: '靛青色', textClass: 'text-indigo-500', bgClass: 'bg-indigo-100' }
                     ]
                   },
                   {
                     group: '紫红色系（5个）',
                     colors: [
-                      {name: 'violet', desc: '紫罗兰', textClass: 'text-violet-500', bgClass: 'bg-violet-100'},
-                      {name: 'purple', desc: '紫色', textClass: 'text-purple-500', bgClass: 'bg-purple-100'},
-                      {name: 'fuchsia', desc: '洋红', textClass: 'text-fuchsia-500', bgClass: 'bg-fuchsia-100'},
-                      {name: 'pink', desc: '粉红', textClass: 'text-pink-500', bgClass: 'bg-pink-100'},
-                      {name: 'rose', desc: '玫瑰色', textClass: 'text-rose-500', bgClass: 'bg-rose-100'}
+                      { name: 'violet', desc: '紫罗兰', textClass: 'text-violet-500', bgClass: 'bg-violet-100' },
+                      { name: 'purple', desc: '紫色', textClass: 'text-purple-500', bgClass: 'bg-purple-100' },
+                      { name: 'fuchsia', desc: '洋红', textClass: 'text-fuchsia-500', bgClass: 'bg-fuchsia-100' },
+                      { name: 'pink', desc: '粉红', textClass: 'text-pink-500', bgClass: 'bg-pink-100' },
+                      { name: 'rose', desc: '玫瑰色', textClass: 'text-rose-500', bgClass: 'bg-rose-100' }
                     ]
                   },
                   {
                     group: '特殊颜色（5个）',
                     colors: [
-                      {name: 'black', desc: '黑色', textClass: 'text-black', bgClass: 'bg-gray-100'},
-                      {name: 'white', desc: '白色', textClass: 'text-gray-900', bgClass: 'bg-white'},
-                      {name: 'transparent', desc: '透明', textClass: 'text-gray-500', bgClass: 'bg-transparent'},
-                      {name: 'current', desc: '当前颜色', textClass: 'text-current', bgClass: 'bg-gray-100'},
-                      {name: 'inherit', desc: '继承颜色', textClass: 'text-inherit', bgClass: 'bg-gray-100'}
+                      { name: 'black', desc: '黑色', textClass: 'text-black', bgClass: 'bg-gray-100' },
+                      { name: 'white', desc: '白色', textClass: 'text-gray-900', bgClass: 'bg-white' },
+                      { name: 'transparent', desc: '透明', textClass: 'text-gray-500', bgClass: 'bg-transparent' },
+                      { name: 'current', desc: '当前颜色', textClass: 'text-current', bgClass: 'bg-gray-100' },
+                      { name: 'inherit', desc: '继承颜色', textClass: 'text-inherit', bgClass: 'bg-gray-100' }
                     ]
                   },
                   {
@@ -359,11 +348,10 @@ const PresetValues: React.FC = () => {
                               <div className={`flex flex-wrap gap-2 ${group.colors ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : ''}`}>
                                 {(group.values || group.colors)?.map((item: any) => (
                                   <div key={typeof item === 'string' ? item : item.name} className="flex items-center">
-                                    <code className={`px-2 py-1 rounded border border-gray-200 text-sm font-mono ${
-                                      typeof item === 'string' 
-                                        ? 'bg-white' 
-                                        : `${item.bgClass} ${item.textClass}`
-                                    }`}>
+                                    <code className={`px-2 py-1 rounded border border-gray-200 text-sm font-mono ${typeof item === 'string'
+                                      ? 'bg-white'
+                                      : `${item.bgClass} ${item.textClass}`
+                                      }`}>
                                       <Tooltip text={
                                         typeof item === 'string'
                                           ? getValueDescription(item, group.group)
