@@ -22,28 +22,23 @@ export const SizeSection: FC = () => {
         }
     ];
     const arbitraryExamples = ['[24px]', '[2rem]', '[calc(100%-20px)]'];
-    const category = {
-        name: '尺寸相关',
-        prefix: '通用',
-        values: [
-            {
-                type: 'fixed',
-                examples: fixedExamples,
-                description: '所有预设尺寸值，可用于宽度、高度、间距等属性'
-            },
-            {
-                type: 'arbitrary',
-                examples: arbitraryExamples,
-                description: '可以使用任意有效的 CSS 尺寸值'
-            }
-        ],
-        arbitraryValueExample: 'w-[100px], h-[calc(100vh-20px)]'
-    };
-    return <div key={category.name} className="mb-8 border-b pb-6">
-        <h3 className="text-lg font-medium mb-4">{category.name}</h3>
+
+    return <div className="mb-8 border-b pb-6">
+        <h3 className="text-lg font-medium mb-4">尺寸相关</h3>
 
         <div className="space-y-4">
-            {category.values.map((value, index) => (
+            {[
+                {
+                    type: 'fixed',
+                    examples: fixedExamples,
+                    description: '所有预设尺寸值，可用于宽度、高度、间距等属性'
+                },
+                {
+                    type: 'arbitrary',
+                    examples: arbitraryExamples,
+                    description: '可以使用任意有效的 CSS 尺寸值'
+                }
+            ].map((value, index) => (
                 <div key={index} className="bg-gray-50 p-4 rounded">
                     <div className="flex items-start justify-between mb-2">
                         <span className="font-medium text-sm text-gray-700">
@@ -56,7 +51,7 @@ export const SizeSection: FC = () => {
                                 <div className="flex flex-wrap gap-2">
                                     {(value.examples as string[]).map((example) => (
                                         <code key={example} className="px-2 py-1 bg-white rounded border border-gray-200 text-sm font-mono">
-                                            <Tooltip text={getValueDescription(example, category.name)}>
+                                            <Tooltip text={getValueDescription(example, '尺寸相关')}>
                                                 {example}
                                             </Tooltip>
                                         </code>
@@ -99,14 +94,12 @@ export const SizeSection: FC = () => {
                 </div>
             ))}
 
-            {category.arbitraryValueExample && (
-                <div className="mt-2 text-sm text-gray-500">
-                    <span className="font-medium">任意值示例：</span>
-                    <code className="ml-2 px-2 py-1 bg-gray-100 rounded">
-                        {category.arbitraryValueExample}
-                    </code>
-                </div>
-            )}
+            <div className="mt-2 text-sm text-gray-500">
+                <span className="font-medium">任意值示例：</span>
+                <code className="ml-2 px-2 py-1 bg-gray-100 rounded">
+                    w-[100px], h-[calc(100vh-20px)]
+                </code>
+            </div>
         </div>
     </div>;
 };

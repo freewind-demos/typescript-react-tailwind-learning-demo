@@ -18,28 +18,23 @@ export const FontSection: FC = () => {
         }
     ];
     const arbitraryExamples = ['text-[20px]', 'font-[600]', 'leading-[2.5]'];
-    const category = {
-        name: '字体相关',
-        prefix: '通用',
-        values: [
-            {
-                type: 'fixed',
-                examples: fixedExamples,
-                description: '字体相关的预设值，包括大小、粗细和行高'
-            },
-            {
-                type: 'arbitrary',
-                examples: arbitraryExamples,
-                description: '可以使用任意有效的字体相关值'
-            }
-        ],
-        arbitraryValueExample: 'text-[20px], font-[600]'
-    };
-    return <div key={category.name} className="mb-8 border-b pb-6">
-        <h3 className="text-lg font-medium mb-4">{category.name}</h3>
+
+    return <div className="mb-8 border-b pb-6">
+        <h3 className="text-lg font-medium mb-4">字体相关</h3>
 
         <div className="space-y-4">
-            {category.values.map((value, index) => (
+            {[
+                {
+                    type: 'fixed',
+                    examples: fixedExamples,
+                    description: '字体相关的预设值，包括大小、粗细和行高'
+                },
+                {
+                    type: 'arbitrary',
+                    examples: arbitraryExamples,
+                    description: '可以使用任意有效的字体相关值'
+                }
+            ].map((value, index) => (
                 <div key={index} className="bg-gray-50 p-4 rounded">
                     <div className="flex items-start justify-between mb-2">
                         <span className="font-medium text-sm text-gray-700">
@@ -52,7 +47,7 @@ export const FontSection: FC = () => {
                                 <div className="flex flex-wrap gap-2">
                                     {(value.examples as string[]).map((example) => (
                                         <code key={example} className="px-2 py-1 bg-white rounded border border-gray-200 text-sm font-mono">
-                                            <Tooltip text={getValueDescription(example, category.name)}>
+                                            <Tooltip text={getValueDescription(example, '字体相关')}>
                                                 {example}
                                             </Tooltip>
                                         </code>
@@ -95,14 +90,12 @@ export const FontSection: FC = () => {
                 </div>
             ))}
 
-            {category.arbitraryValueExample && (
-                <div className="mt-2 text-sm text-gray-500">
-                    <span className="font-medium">任意值示例：</span>
-                    <code className="ml-2 px-2 py-1 bg-gray-100 rounded">
-                        {category.arbitraryValueExample}
-                    </code>
-                </div>
-            )}
+            <div className="mt-2 text-sm text-gray-500">
+                <span className="font-medium">任意值示例：</span>
+                <code className="ml-2 px-2 py-1 bg-gray-100 rounded">
+                    text-[20px], font-[600]
+                </code>
+            </div>
         </div>
     </div>
 };

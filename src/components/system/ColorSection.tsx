@@ -66,97 +66,89 @@ export const ColorSection: FC = () => {
             values: ['50', '100', '200', '300', '400', '500', '600', '700', '800', '900']
         }
     ];
+
     const arbitraryExamples = [
         {
             group: '任意颜色值（不固定）',
             values: ['[#FF0000]', '[rgb(255,0,0)]', '[hsl(0,100%,50%)]', '[rgba(255,0,0,0.5)]']
         }
     ];
-    const category = {
-        name: '颜色相关',
-        prefix: '通用',
-        values: [
-            {
-                type: 'fixed',
-                examples: fixedExamples,
-                description: '所有预设颜色值，每种颜色都有50-900共9个深浅度'
-            },
-            {
-                type: 'arbitrary',
-                examples: arbitraryExamples,
-                description: '可以使用任意有效的 CSS 颜色值，包括：HEX、RGB、RGBA、HSL、HSLA等'
-            }
-        ],
-        arbitraryValueExample: 'text-[#FF0000], bg-[rgb(255,0,0)]'
-    };
-    return <div key={category.name} className="mb-8 border-b pb-6">
-        <h3 className="text-lg font-medium mb-4">{category.name}</h3>
+
+    return <div className="mb-8 border-b pb-6">
+        <h3 className="text-lg font-medium mb-4">颜色相关</h3>
 
         <div className="space-y-4">
-            {category.values.map((value, index) => (
-                <div key={index} className="bg-gray-50 p-4 rounded">
-                    <div className="flex items-start justify-between mb-2">
-                        <span className="font-medium text-sm text-gray-700">
-                            {value.type === 'fixed' ? '预设值' : '任意值'}
-                        </span>
-                    </div>
-                    <div className="space-y-4">
-                        {Array.isArray(value.examples) && value.examples.length > 0 && (
-                            typeof value.examples[0] === 'string' ? (
-                                <div className="flex flex-wrap gap-2">
-                                    {(value.examples as string[]).map((example) => (
-                                        <code key={example} className="px-2 py-1 bg-white rounded border border-gray-200 text-sm font-mono">
-                                            <Tooltip text={getValueDescription(example, category.name)}>
-                                                {example}
+            {/* 预设值部分 */}
+            <div className="bg-gray-50 p-4 rounded">
+                <div className="flex items-start justify-between mb-2">
+                    <span className="font-medium text-sm text-gray-700">预设值</span>
+                </div>
+                <div className="space-y-4">
+                    {fixedExamples.map((group) => (
+                        <div key={group.group} className="space-y-2">
+                            <h4 className="font-medium text-gray-900">
+                                {group.group}
+                            </h4>
+                            <div className={`flex flex-wrap gap-2 ${group.colors ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : ''}`}>
+                                {(group.values || group.colors)?.map((item: any) => (
+                                    <div key={typeof item === 'string' ? item : item.name} className="flex items-center">
+                                        <code className={`px-2 py-1 rounded border border-gray-200 text-sm font-mono ${
+                                            typeof item === 'string' ? 'bg-white' : `${item.bgClass} ${item.textClass}`
+                                        }`}>
+                                            <Tooltip text={typeof item === 'string'
+                                                ? getValueDescription(item, group.group)
+                                                : `${item.desc}（${getValueDescription(item.name, group.group)}）`}>
+                                                {typeof item === 'string' ? item : item.name}
                                             </Tooltip>
                                         </code>
-                                    ))}
-                                </div>
-                            ) : (
-                                <div className="space-y-4">
-                                    {(value.examples as any[]).map((group) => (
-                                        <div key={group.group} className="space-y-2">
-                                            <h4 className="font-medium text-gray-900">
-                                                {group.group}
-                                            </h4>
-                                            <div className={`flex flex-wrap gap-2 ${group.colors ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4' : ''}`}>
-                                                {(group.values || group.colors)?.map((item: any) => (
-                                                    <div key={typeof item === 'string' ? item : item.name} className="flex items-center">
-                                                        <code className={`px-2 py-1 rounded border border-gray-200 text-sm font-mono ${typeof item === 'string'
-                                                            ? 'bg-white'
-                                                            : `${item.bgClass} ${item.textClass}`}`}>
-                                                            <Tooltip text={typeof item === 'string'
-                                                                ? getValueDescription(item, group.group)
-                                                                : `${item.desc}（${getValueDescription(item.name, group.group)}）`}>
-                                                                {typeof item === 'string' ? item : item.name}
-                                                            </Tooltip>
-                                                        </code>
-                                                        {typeof item !== 'string' && (
-                                                            <span className={`text-sm ml-2 ${item.textClass}`}>
-                                                                （{item.desc}）
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            <p className="text-sm text-gray-600 mt-2">{value.description}</p>
-                                        </div>
-                                    ))}
-                                </div>
-                            )
-                        )}
-                    </div>
+                                        {typeof item !== 'string' && (
+                                            <span className={`text-sm ml-2 ${item.textClass}`}>
+                                                （{item.desc}）
+                                            </span>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600 mt-2">
+                                所有预设颜色值，每种颜色都有50-900共9个深浅度
+                            </p>
+                        </div>
+                    ))}
                 </div>
-            ))}
+            </div>
 
-            {category.arbitraryValueExample && (
-                <div className="mt-2 text-sm text-gray-500">
-                    <span className="font-medium">任意值示例：</span>
-                    <code className="ml-2 px-2 py-1 bg-gray-100 rounded">
-                        {category.arbitraryValueExample}
-                    </code>
+            {/* 任意值部分 */}
+            <div className="bg-gray-50 p-4 rounded">
+                <div className="flex items-start justify-between mb-2">
+                    <span className="font-medium text-sm text-gray-700">任意值</span>
                 </div>
-            )}
+                <div className="space-y-4">
+                    {arbitraryExamples.map((group) => (
+                        <div key={group.group} className="space-y-2">
+                            <h4 className="font-medium text-gray-900">{group.group}</h4>
+                            <div className="flex flex-wrap gap-2">
+                                {group.values.map((value) => (
+                                    <code key={value} className="px-2 py-1 bg-white rounded border border-gray-200 text-sm font-mono">
+                                        <Tooltip text={getValueDescription(value, '颜色相关')}>
+                                            {value}
+                                        </Tooltip>
+                                    </code>
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600 mt-2">
+                                可以使用任意有效的 CSS 颜色值，包括：HEX、RGB、RGBA、HSL、HSLA等
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="mt-2 text-sm text-gray-500">
+                <span className="font-medium">任意值示例：</span>
+                <code className="ml-2 px-2 py-1 bg-gray-100 rounded">
+                    text-[#FF0000], bg-[rgb(255,0,0)]
+                </code>
+            </div>
         </div>
     </div>
 };
