@@ -90,6 +90,66 @@ const SpecialSyntax: React.FC = () => {
                                 <li>group-* 类用在子元素上，表示"当父元素处于某状态时"</li>
                                 <li>可用的状态包括：hover、focus、active、disabled 等</li>
                             </ul>
+                            <div className="mt-3 bg-white/50 p-3 rounded">
+                                <p className="font-medium text-sm text-gray-700">为什么用 "group" 而不是 "parent"？</p>
+                                <ul className="list-disc list-inside space-y-1 text-sm text-gray-600 mt-1">
+                                    <li>group 表示"组"的概念，暗示这是一个整体，更符合组件化思维</li>
+                                    <li>parent 过于强调父子关系，而 group 更强调整体性和关联性</li>
+                                    <li>group 这个词在 UI 设计中常用，如 Group Box、Button Group 等</li>
+                                    <li>parent 可能与 CSS 的 :parent 选择器（如果将来有的话）产生混淆</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="bg-blue-50 p-4 rounded mt-4">
+                            <p className="font-medium">Tailwind 中的父子关系术语：</p>
+                            <div className="space-y-4 mt-2">
+                                {/* group */}
+                                <div>
+                                    <p className="font-medium text-sm text-gray-700">1. group/group-* （组/组成员）</p>
+                                    <p className="text-sm text-gray-600 mt-1">用于父元素状态影响子元素样式</p>
+                                    <code className="block text-sm mt-1 bg-white/50 p-2 rounded">
+                                        group group-hover:text-blue-500
+                                    </code>
+                                </div>
+
+                                {/* peer */}
+                                <div>
+                                    <p className="font-medium text-sm text-gray-700">2. peer/peer-* （同伴/同伴状态）</p>
+                                    <p className="text-sm text-gray-600 mt-1">用于兄弟元素之间的状态影响</p>
+                                    <code className="block text-sm mt-1 bg-white/50 p-2 rounded">
+                                        peer peer-focus:text-blue-500
+                                    </code>
+                                </div>
+
+                                {/* children */}
+                                <div>
+                                    <p className="font-medium text-sm text-gray-700">3. space-*（子元素间距）</p>
+                                    <p className="text-sm text-gray-600 mt-1">用于控制直接子元素之间的间距</p>
+                                    <code className="block text-sm mt-1 bg-white/50 p-2 rounded">
+                                        space-y-4 space-x-2
+                                    </code>
+                                </div>
+
+                                {/* divide */}
+                                <div>
+                                    <p className="font-medium text-sm text-gray-700">4. divide-*（子元素分隔）</p>
+                                    <p className="text-sm text-gray-600 mt-1">用于给直接子元素之间添加分隔线</p>
+                                    <code className="block text-sm mt-1 bg-white/50 p-2 rounded">
+                                        divide-y divide-gray-200
+                                    </code>
+                                </div>
+
+                                <div className="text-sm text-gray-600 bg-white/50 p-3 rounded">
+                                    <p className="font-medium text-gray-700">注意：</p>
+                                    <ul className="list-disc list-inside mt-1 space-y-1">
+                                        <li>Tailwind 倾向于使用更具语义化的词汇（如 group、peer、space）</li>
+                                        <li>没有直接使用 parent/child 这样的术语</li>
+                                        <li>这种设计使得类名更易读，更符合实际用途</li>
+                                        <li>同时避免了与可能的 CSS 选择器冲突</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
